@@ -1,16 +1,9 @@
 #include "mywindow.h"
-const int sz = 10;
-int op(0), mass[sz], val(0), tr_mn(10), mn(10);
-int n_1(0), n_2(0); double x10Val;
-int count(0), count_init(0);
-bool addBool(false), subBool(false), multBool(false), divBool(false), transBool(false),
-    n_2Bool(false);
-QString value = "";
 
 MyWindow::MyWindow(QWidget *parent) :
     QDialog(parent)
 {
-    for(int i=0;i<sz;i++)
+    for(int i = 0; i < sz; i++)
         mass[i] = 0;
 
     sb1 = new QSpinBox;
@@ -144,9 +137,9 @@ void MyWindow::text()
 void MyWindow::changePrecision_1(int val_mn)
 {
     mn = val_mn;
-    for(int i=0; i<val_mn; i++)
+    for(int i = 0; i < val_mn; i++)
         push_mass[i]->setEnabled(true);
-    for(int i=val_mn; i<16; i++)
+    for(int i = val_mn; i < 16; i++)
         push_mass[i]->setEnabled(false);
 }
 
@@ -198,12 +191,12 @@ void MyWindow::initial()
 
         count_init++;
 
-        for(int i=0; i<count_init; i++)
+        for(int i = 0; i < count_init; i++)
         {
             if(mass[i] >= 0 && mass[i] < 10)
-                str[i] = mass[i]+48;
+                str[i] = mass[i] + 48;
             if(mass[i] >= 10 && mass[i] < 16)
-                str[i] = mass[i]+55;
+                str[i] = mass[i] + 55;
         }
         label->setText(str);
         count = count_init;
@@ -214,9 +207,9 @@ void MyWindow::actions()
 {
     if(n_2Bool)
     {
-        for(int i=0; i<count; i++)
+        for(int i = 0; i < count; i++)
         {
-            for(int j=i; j<count-1; j++)
+            for(int j = i; j < count-1; j++)
                 mass[i] *= mn;
             n_2 += mass[i];
         }
@@ -235,9 +228,9 @@ void MyWindow::actions()
     if(!n_2Bool)
     {
         n_1 = 0;
-        for(int i=0; i<count; i++)
+        for(int i = 0; i < count; i++)
         {
-            for(int j=i; j<count-1; j++)
+            for(int j = i; j < count-1; j++)
                 mass[i] *= mn;
             n_1 += mass[i];
         }
@@ -265,7 +258,7 @@ void MyWindow::clear()
     divBool = false;
     n_2Bool = false;
     transBool = false;
-    for(int i=0; i<sz; i++)
+    for(int i = 0; i < sz; i++)
         mass[i] = 0;
     count = 0;
     count_init = 0;
@@ -277,9 +270,9 @@ void MyWindow::transform()
     if(mn != tr_mn)
     {
         QString str;
-        for(int i=0; i<count; i++)
+        for(int i = 0; i < count; i++)
         {
-            for(int j=i; j<count-1; j++)
+            for(int j = i; j < count-1; j++)
                 mass[i] *= mn;
             n_1 += mass[i];
         }
@@ -295,14 +288,14 @@ void MyWindow::transform()
         }
 
         int i, j;
-        for(i=0, j=count-1; i<j; ++i, --j)
+        for(i = 0, j = count - 1; i < j; ++i, --j)
         {
             temp_1 = mass[i];
             mass[i] = mass[j];
             mass[j] = temp_1;
         }
 
-        for(int i=0; i<count; i++)
+        for(int i = 0; i < count; i++)
         {
             if(mass[i] >= 0 && mass[i] < 10)
                 str[i] = mass[i] + 48;
@@ -320,9 +313,9 @@ void MyWindow::equal()
     if(n_2Bool)
     {
         QString str;
-        for(int i=0; i<count; i++)
+        for(int i = 0; i < count; i++)
         {
-            for(int j=i; j<count-1; j++)
+            for(int j = i; j < count-1; j++)
                 mass[i] *= mn;
             n_2 += mass[i];
         }
@@ -347,13 +340,13 @@ void MyWindow::equal()
                 count++;
             }
             int i, j;
-            for(i=0, j=count-1; i<j; ++i, --j)
+            for(i = 0, j = count - 1; i < j; ++i, --j)
             {
                 temp_1 = mass[i];
                 mass[i] = mass[j];
                 mass[j] = temp_1;
             }
-            for(i=0; i<count; i++)
+            for(i = 0; i < count; i++)
             {
                 if(mass[i] >= 0 && mass[i] < 10)
                     str[i] = mass[i] + 48;
