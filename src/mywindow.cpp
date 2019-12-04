@@ -225,7 +225,7 @@ void MyWindow::actions()
         case 16: n_1 += n_2; break;
         case 17: n_1 -= n_2; break;
         case 18: n_1 *= n_2; break;
-        case 19: n_1 *= n_2; break;
+        case 19: n_1 /= n_2; break;
         default: label->setText("ERROR"); break;
         }
         n_2 = 0;
